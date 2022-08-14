@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+     app: da-services
+  name: da-services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: da-services
+  template:
+    metadata:
+      labels:
+        app: da-services
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "da-services"
+        dapr.io/app-port: "80"
+    spec:
+      containers:
+      - name: da-services
+        image: zsb8/da-services:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - configMapRef:
+              name: mongo-config
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: da-services
+spec:
+  selector:
+    app: da-services
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
