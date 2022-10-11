@@ -14,7 +14,7 @@ You should run these programs together: WB_DA_API_services, WB_noahs_doves and W
 ![image](https://user-images.githubusercontent.com/75282285/147959095-36f762d1-d257-4bd5-ac5e-674ae2639a26.png)
 
 ## How to confirm it works OK on Docker
-You input the entity info such as name, postcode, address and location in your Postman tool.
+For example, you can input the entity info such as name, postcode, address and location in your Postman tool.
   
 ```json  
 {
