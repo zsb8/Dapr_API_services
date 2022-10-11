@@ -59,7 +59,7 @@ http://127.0.0.1:8082/v1.0/invoke/da-services/method/listings/matching/
 We can test it with Postman.
 ![image](https://user-images.githubusercontent.com/75282285/150705104-245ea9f1-d2cc-4404-8fab-1220175d465c.png)
 
-# Use GreaphQL to query
+# Use GreaphQL to query in listing_match.py
 ~~~
 def match_graphql(name, near):
     """
