@@ -1,5 +1,5 @@
 # da-services
-This is the part3 of the pipeline.  It provide one API for get the listing id. The development team can get the data through Dapr middleware.
+It provide one API for get the listing id. The development team can get the data through Dapr middleware.
 This program used FastAPI to provide the `post` and `get` services. It used GraphQL to query data.
 You should run these programs together: WB_DA_API_services, WB_noahs_doves and WB_pipelines_FastAPI_K8S_DAPR.
 ![image](https://user-images.githubusercontent.com/75282285/150705586-204a54d4-c5b8-4726-b5b9-1764d6b0ae9e.png)
@@ -14,7 +14,7 @@ You should run these programs together: WB_DA_API_services, WB_noahs_doves and W
 ![image](https://user-images.githubusercontent.com/75282285/147959095-36f762d1-d257-4bd5-ac5e-674ae2639a26.png)
 
 ## How to confirm it works OK on Docker
-You input the 
+You input the entity info such as name, postcode, address and location.
   
 ```json  
 {
@@ -25,7 +25,7 @@ You input the
 }
   
 ```
-then you will see this result in the Postman:
+Then you will get this result in the your Postman:
 ![image](https://user-images.githubusercontent.com/75282285/147959279-5653129b-9f31-4ced-bf1f-60370a4cf72d.png)
 
 # Kubernetes
