@@ -59,5 +59,30 @@ http://127.0.0.1:8082/v1.0/invoke/da-services/method/listings/matching/
 We can test it with Postman.
 ![image](https://user-images.githubusercontent.com/75282285/150705104-245ea9f1-d2cc-4404-8fab-1220175d465c.png)
 
+# Use GreaphQL to query
+~~~
+def match_graphql(name, near):
+    """
+    Search the listing id info through region_locality.
+    :param name:(str).
+    :param near:(str) one of the postcode, location, region_locality
+    :return result_df:(df) columns such as ['score', 'id', 'name', 'otherNames', 'street', 'locality', 'region',
+                               'postalCode', 'primaryLink', 'email', 'category', 'denomination', 'type']
+    :return top_score:(int) If graphql find nothing, it will return 0.
+    :return result_num:(int) If graphql find nothing, it will return 0.
+    """
+    result_df = pd.DataFrame(columns=['score', 'id', 'name', 'otherNames', 'street', 'locality', 'region',
+                                      'postalCode', 'primaryLink', 'email', 'category', 'denomination', 'type'])
+    search_params = {"keywords": name, "near": near}
+    graphql_df = graphql.listingsearch(**search_params)  # df or list
+    if len(graphql_df) > 0:
+        top_score = graphql_df['score'].max()
+        result_num = len(graphql_df)
+        result_df = graphql_df.sort_values('score', ascending=False)
+        result_df.reset_index(drop=True, inplace=True)
+        return result_df, top_score, result_num
+    else:
+        return result_df, 0, 0
+~~~
 
 
