@@ -60,6 +60,7 @@ We can test it with Postman.
 ![image](https://user-images.githubusercontent.com/75282285/150705104-245ea9f1-d2cc-4404-8fab-1220175d465c.png)
 
 # Use GreaphQL to query in listing_match.py
+Use `graphql_df = graphql.listingsearch(**search_params) ` to query.
 ~~~
 def match_graphql(name, near):
     """
